@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="./book.js"></script>
 </head>
 <body>
-    
+    <button id="showFormBtn">NEW BOOK</button>
+    <form id="myForm" action="">
+        <fieldset>
+
+            <label for="title">Title of the book:</label>
+            <input type="text" id="title" required>
+
+            <label for="author">Author: </label>
+            <input type="text" id="author" required>
+
+            <label for="pages">Number of pages:</label>
+            <input type="number" id="pages" required>
+
+            <label for="readit">Have you read the book?</label>
+        
+            <input id="readit-yes" type="radio" name="readit" value="read it" required>
+            <label for="readit-yes">Yes</label>
+
+            <input id="readit-no" type="radio" name="readit" value="not read it">
+            <label for="readit-no">No</label>
+
+          
+            
+        </fieldset>
+
+        <button type="submit">Add Book!</button>  
+    </form>
 </body>
 </html>
