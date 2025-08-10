@@ -15,9 +15,8 @@ function addBookToLibrary(t,a,p,r) {
     console.log('addBookLibrary works')
     // const id = crypto.randomUUID();
     const newBook = new Book(t,a,p,r);
-    myLibrary.push(newBook);
-    addList(myLibrary);
-}
+    return myLibrary.push(newBook);
+   ;}
 
 
 // TOGLE THE FORM TO ADD BOOKS
@@ -38,41 +37,101 @@ showFormBtnVar.addEventListener('click',function() {
 })
 
 // function to recollect the values of the form
-const submitButton = document.getElementById('submitButton');
 
-submitButton.addEventListener('click',function(event) {
+// const submitButton = document.getElementById('submitButton');
+myFormVar.addEventListener('submit',function(event) {
     event.preventDefault();
-    const inputAuthor = document.getElementById('author').value;
-    // console.log(inputAuthor);
-    const inputTitle = document.getElementById('title').value;
-    // console.log(inputTitle);
-    const inputPages = document.getElementById('pages').value;
-    // console.log(inputPages);
-    const inputRadio = document.querySelector('input[name="readit"]:checked');
-    if (inputRadio) {
-        const inputReadit = inputRadio.value;
-        addBookToLibrary(inputTitle,inputAuthor,inputPages,inputReadit);
-        // addList(myLibrary);
     
-    }
+    const inputAuthor = document.getElementById('author').value;
+    document.getElementById('author').value = "";
+
+    const inputTitle = document.getElementById('title').value;
+    document.getElementById('title').value = "";
+    
+    const inputPages = document.getElementById('pages').value;
+    document.getElementById('pages').value= "";
+
+    const inputRadio = document.querySelector('input[name="readit"]:checked');
+    
+    const inputReadit = inputRadio.value;
+    addBookToLibrary(inputTitle,inputAuthor,inputPages,inputReadit);
+    addVisualList(myLibrary);
+    
     
 })
 
-const myListElement = document.getElementById("cardsContainer");
-const newListItem = document.createElement('li');
+const libraryList = document.querySelector('ul');
 
-function addObjectotList(mylist) {
+function addVisualList(listLibrary) {
+    const listItem = document.createElement('li');
+    const listTitle = document.createElement('div');
+    const listAuthor = document.createElement('div');
+    const listPage = document.createElement('div');
+    const listReadit = document.createElement('div');
+
     
+    for (var i=0;i < listLibrary.length; i++) {
+
+        listTitle.textContent = listLibrary[i].title;
+        listAuthor.textContent = listLibrary[i].author;
+        listPage.textContent = listLibrary[i].pages;
+        listReadit.textContent = listLibrary[i].readit;
+        listItem.appendChild(listTitle);
+        listItem.appendChild(listAuthor);
+        listItem.appendChild(listPage);
+        listItem.appendChild(listReadit);
+
+        libraryList.appendChild(listItem);
+    };
+
     
-    newListItem.textContent = mylist.author;
-    myListElement.append(newListItem)
+
+
+
 }
 
-function addList(myLibrary) {
-    for (var i =0 ; i< myLibrary.length; i++) {
-        addObjectotList(myLibrary[i])
-    }
-}
+
+
+// COPIA DE LA FUNCION DE ARRIBA
+// // function to recollect the values of the form
+// const submitButton = document.getElementById('submitButton');
+
+// submitButton.addEventListener('click',function(event) {
+//     event.preventDefault();
+//     const inputAuthor = document.getElementById('author').value;
+//     // console.log(inputAuthor);
+//     const inputTitle = document.getElementById('title').value;
+//     // console.log(inputTitle);
+//     const inputPages = document.getElementById('pages').value;
+//     // console.log(inputPages);
+//     const inputRadio = document.querySelector('input[name="readit"]:checked');
+//     if (inputRadio) {
+//         const inputReadit = inputRadio.value;
+//         addBookToLibrary(inputTitle,inputAuthor,inputPages,inputReadit);
+//         // addList(myLibrary);
+    
+//     }
+    
+// })
+
+
+
+
+// const myListElement = document.getElementById("cardsContainer");
+// const newListItem = document.createElement('li');
+
+// function addObjectotList(mylist) {
+    
+    
+//     newListItem.textContent = mylist.author;
+//     myListElement.append(newListItem)
+// }
+
+// function addList(myLibrary) {
+//     for (var i =0 ; i< myLibrary.length; i++) {
+//         addObjectotList(myLibrary[i])
+//     }
+// }
 
 // function listItem(library) {
 //     const 
