@@ -15,13 +15,9 @@ function addBookToLibrary(t,a,p,r) {
     console.log('addBookLibrary works')
     // const id = crypto.randomUUID();
     const newBook = new Book(t,a,p,r);
-    return myLibrary.push(newBook);
+    myLibrary.push(newBook);
+    addList(myLibrary);
 }
-
-// function showBooks(library) {
-//     for (i,)
-// }
-
 
 
 // TOGLE THE FORM TO ADD BOOKS
@@ -42,7 +38,6 @@ showFormBtnVar.addEventListener('click',function() {
 })
 
 // function to recollect the values of the form
-
 const submitButton = document.getElementById('submitButton');
 
 submitButton.addEventListener('click',function(event) {
@@ -56,28 +51,58 @@ submitButton.addEventListener('click',function(event) {
     const inputRadio = document.querySelector('input[name="readit"]:checked');
     if (inputRadio) {
         const inputReadit = inputRadio.value;
-        // console.log(inputReadit);
         addBookToLibrary(inputTitle,inputAuthor,inputPages,inputReadit);
+        // addList(myLibrary);
+    
     }
     
 })
 
+const myListElement = document.getElementById("cardsContainer");
+const newListItem = document.createElement('li');
 
-// NEW MEHTOD TO OBTAIN THE VALUES OF THE FORM
-
-// const valuesForm = document.getElementById('myForm');
-
-// valuesForm.addEventListener("submit",function(event) {
-//     event.preventDefault();
-//     const formData = new FormData(this);
-
-//     let userInputs = {};
-
-//     for (const key of formData.keys()) {
-//         if(formData.get(key).toString().length >0 ){
-//             userInputs[key] = formData.get(key).toString();
-//             console.log(userInputs);
-//         }
-//     }
+function addObjectotList(mylist) {
     
-// });
+    
+    newListItem.textContent = mylist.author;
+    myListElement.append(newListItem)
+}
+
+function addList(myLibrary) {
+    for (var i =0 ; i< myLibrary.length; i++) {
+        addObjectotList(myLibrary[i])
+    }
+}
+
+// function listItem(library) {
+//     const 
+
+
+// }
+
+
+// ADD THE ELEMENTS ON A CARD VISUALLY
+// const cardContainer = document.createElement('li');
+// const titleCard = document.createElement('p');
+// const authorCard = document.createElement('p');
+// const pagesCard = document.createElement('p');
+// const readitCard = document.createElement('p');
+
+// const bookCardContainer = document.getElementById("cardsContainer");
+// // var iteList = []
+// function addCards(myLibrary) {
+//     const iteList = []
+//     for (var i=0;i < myLibrary.length; i++) {
+//         console.log(myLibrary[i])
+//         titleCard.textContent = myLibrary[i].title;
+//         authorCard.textContent = myLibrary[i].author;
+//         pagesCard.textContent = myLibrary[i].pages;
+//         readitCard.textContent = myLibrary[i].readit;
+//         cardContainer.appendChild(titleCard);
+//         cardContainer.appendChild(authorCard);
+//         cardContainer.appendChild(pagesCard);
+//         cardContainer.appendChild(readitCard);
+//         iteList.push(cardContainer)
+//         // bookCardContainer.appendChild(cardContainer);
+//     }
+// }
