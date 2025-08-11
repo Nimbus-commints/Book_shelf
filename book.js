@@ -9,7 +9,16 @@ function Book(title, author, pages, readit){
     this.id = crypto.randomUUID();
 }
 
-
+Book.prototype.changeReadit =  function() {
+    if (this.readit == 'Yes') {
+        this.readit = 'No';
+        return this.readit;
+    } else {
+        this.readit = 'Yes';
+        return this.readit;
+    }
+    
+}
 // t = title, a = author, p = pages, r = readit
 function addBookToLibrary(t,a,p,r) {
     console.log('addBookLibrary works')
@@ -70,6 +79,9 @@ function addVisualList(listLibrary) {
     const listReadit = document.createElement('div');
     const listBtn = document.createElement('button');
 
+    // last added
+    const listBtnread = document.createElement('button');
+
     for (var i=0;i < listLibrary.length; i++) {
 
         listItem.setAttribute('data-id',listLibrary[i].id)
@@ -78,12 +90,15 @@ function addVisualList(listLibrary) {
         listPage.textContent = listLibrary[i].pages;
         listReadit.textContent = listLibrary[i].readit;
         listBtn.textContent = "Remove"
+        listBtnread.textContent = "Changue status of Read"
 
         listItem.appendChild(listTitle);
         listItem.appendChild(listAuthor);
         listItem.appendChild(listPage);
         listItem.appendChild(listReadit);
         listItem.appendChild(listBtn);
+        // 
+        listItem.appendChild(listBtnread);
 
         libraryList.appendChild(listItem);
     };
@@ -92,9 +107,20 @@ function addVisualList(listLibrary) {
             // method to get the index using the id.
             const indexByID = myLibrary.findIndex(item => item.id == listItem.dataset.id)
             myLibrary.splice(indexByID,1)
-            console.log(listItem.dataset.id);
-            console.log(myLibrary);
-            console.log("LLego hasta aqui");
+            // console.log(listItem.dataset.id);
+            // console.log(myLibrary);
+            // console.log("LLego hasta aqui");
         });
+        // 
+    listBtnread.addEventListener('click',()=>{
+        console.log("change read it");
+        const indexByID = myLibrary.findIndex(item => item.id == listItem.dataset.id)
+            
+        listLibrary[indexByID].changeReadit();
+        console.log(listLibrary[indexByID].readit)
+        listReadit.textContent = listLibrary[indexByID].readit;
+    })
+   
+    
 }
 
