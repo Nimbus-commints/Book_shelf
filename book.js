@@ -85,12 +85,16 @@ function addVisualList(listLibrary) {
     for (var i=0;i < listLibrary.length; i++) {
 
         listItem.setAttribute('data-id',listLibrary[i].id)
-        listTitle.textContent = listLibrary[i].title;
-        listAuthor.textContent = listLibrary[i].author;
-        listPage.textContent = listLibrary[i].pages;
-        listReadit.textContent = listLibrary[i].readit;
-        listBtn.textContent = "Remove"
+        listTitle.innerHTML = `Book: <b>${listLibrary[i].title}</b>`;
+        listTitle.setAttribute('class','bookTitleCard')
+        listAuthor.innerHTML = `Author: <b><i>${listLibrary[i].author}</i></b>`;
+        listAuthor.setAttribute('class','bookAuthorCard')
+        listPage.innerHTML = `Pages: <b>${listLibrary[i].pages}</b>`;
+        listReadit.innerHTML = `Have you read it?: <b>${listLibrary[i].readit}</b>`;
+        listBtn.textContent = "Remove Book"
+        listBtn.setAttribute('class','btnRemove')
         listBtnread.textContent = "Changue status of Read"
+        listBtnread.setAttribute('class','btnRead')
 
         listItem.appendChild(listTitle);
         listItem.appendChild(listAuthor);
@@ -118,7 +122,7 @@ function addVisualList(listLibrary) {
             
         listLibrary[indexByID].changeReadit();
         console.log(listLibrary[indexByID].readit)
-        listReadit.textContent = listLibrary[indexByID].readit;
+        listReadit.innerHTML = `Have you read it?: <b>${listLibrary[indexByID].readit}</b>`;
     })
    
     

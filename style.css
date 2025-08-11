@@ -1,3 +1,72 @@
 #myForm {
     display: none;
 }
+
+ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 20px;
+    padding: 50px;
+}
+
+li {
+    background-color: rgb(166, 223, 233);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 4px 3px 4px -4px black;
+}
+
+li > div {
+    margin-bottom: 6px;
+}
+.bookTitleCard {
+  font-size: 30px;
+  /* font-weight: bold; */
+}
+
+.bookAuthorCard {
+  font-size: 20px;
+  /* font-style: italic; */
+}
+
+.btnRemove {
+  margin: 10px;
+  /* background-color: red; */
+  padding: 4px;
+
+}
+
+.btnRemove:hover {
+    background-color: red ;
+    color: white;
+}
+
+.btnRead {
+    padding: 4px;
+}
+
+
+#showFormBtn {
+  font-size: 20px;
+  background-color: aquamarine;
+  border: 2px solid #323333;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#showFormBtn:hover {
+background-color: rgb(78, 161, 134);
+}
+
+#submitButton {
+background-color: green;
+color: white;
+padding: 5px;
+border: 2px solid #323333;
+border-radius: 5px;
+}
+#submitButton:hover {
+    background-color: rgb(1, 92, 1);
+}
